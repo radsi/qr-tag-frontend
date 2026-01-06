@@ -23,7 +23,6 @@ const HomePage = () => {
 
     socket.emit('register', value, () => {
       setIsLoading(false);
-      navigate("/game")
     });
   }
 
@@ -38,12 +37,18 @@ const HomePage = () => {
       setIsConnected(false);
     }
 
+    function onRegistrationReply(data){
+      navigate("/game", {state: data})
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
+    socket.on('registration_reply', onRegistrationReply)
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
+      socket.off('registration_reply', onRegistrationReply)
 
     };
   }, []);
