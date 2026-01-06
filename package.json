@@ -1,0 +1,22 @@
+{
+  "name": "qr-tag",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "@yudiel/react-qr-scanner": "^2.5.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "socket.io-client": "^4.8.3",
+    "socket.js": "^0.1.4"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.6.14",
+    "@rsbuild/plugin-react": "^1.4.2"
+  }
+}
