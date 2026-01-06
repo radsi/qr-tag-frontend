@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../../App.css';
 import { Scanner } from '@yudiel/react-qr-scanner';
-import { socket } from '../../socket';
 import { useLocation, useNavigate } from "react-router-dom";
 import Confetti from 'react-confetti'
+import {socket} from "../../socket"
 
 const Game = () => {
 
@@ -22,7 +22,7 @@ var playersleft = 0
   function onScan(data){
     if (data != targetId) return
 
-    socket.emit("kill", JSON.stringify({targetId}))
+    socket.emit("kill", targetId)
   }
 
   useEffect(() => {

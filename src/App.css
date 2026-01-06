@@ -27,7 +27,6 @@ body {
 
 .input-group {
   display: inline-flex;
-  width: 50%;
   justify-content: center;
   border: 1px solid #ccc;
   border-radius: 8px;

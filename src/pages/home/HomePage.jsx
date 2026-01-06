@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import '../../App.css';
 import { Scanner } from '@yudiel/react-qr-scanner';
 import { useNavigate } from "react-router-dom";
-import { socket } from '../../socket';
+import {socket} from "../../socket"
 
-
-const HomePage = () => {
+const HomePage = (
+) => {
 
   const navigate = useNavigate();
 
@@ -16,12 +16,9 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   function onSubmit(event) {
-    event.preventDefault();
     setIsLoading(true);
 
-    var value = JSON.stringify({name, id})
-
-    socket.emit('register', value, () => {
+    socket.emit('register', id, name, () => {
       setIsLoading(false);
     });
   }
@@ -61,7 +58,7 @@ const HomePage = () => {
         /> : <button className="btn-action" onClick={() => setShowScanner(true)}>Show scanner</button>}
       <h1>QR TAG</h1>
       
-        {id == "" ? <p>Scan your QR first!</p> : <form action="/submitqr">
+        {id == "" ? <p>Scan your QR first!</p> :
         <div className="input-group">
           <input
           onChange={(e)=>setName(e.target.value)}
@@ -81,7 +78,7 @@ const HomePage = () => {
             </svg>
           </button>
         </div>
-      </form>}
+      }
     </div>
   );
 };
