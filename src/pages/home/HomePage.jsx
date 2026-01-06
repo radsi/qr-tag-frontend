@@ -4,8 +4,7 @@ import { Scanner } from '@yudiel/react-qr-scanner';
 import { useNavigate } from "react-router-dom";
 import {socket} from "../../socket"
 
-const HomePage = (
-) => {
+const HomePage = () => {
 
   const navigate = useNavigate();
 
@@ -53,7 +52,7 @@ const HomePage = (
   return (
     <div className="content">
       {showScanner ? <Scanner
-        onScan={(result) => console.log(result) & setId(result)}
+        onScan={(result) => setId(result[0].rawValue)}
         onError={(error) => console.log(error?.message)}
         /> : <button className="btn-action" onClick={() => setShowScanner(true)}>Show scanner</button>}
       <h1>QR TAG</h1>

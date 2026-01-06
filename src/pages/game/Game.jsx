@@ -10,19 +10,18 @@ const Game = () => {
     const { state } = useLocation()
     const navigate = useNavigate();
 
-var playersleft = 0
   const [name, setName] = useState('')
   const [id, setId] = useState('')
-  const [targetName, setTargetName] = useState('no target')
+  const [targetName, setTargetName] = useState(state.target_name ?? "NO TARGET")
   const [targetId, setTargetId] = useState('') 
   const [playersAlive, setPlayersAlive] = useState(10)
 
   const [isConnected, setIsConnected] = useState(socket.connected);
 
   function onScan(data){
-    if (data != targetId) return
+    if (data[0].rawValue != targetId) return
 
-    socket.emit("kill", targetId)
+    socket.emit("kill", data[0].rawValue)
   }
 
   useEffect(() => {
@@ -38,15 +37,15 @@ var playersleft = 0
         navigate("/gameover", {state: data})
     }
 
-    function onGameStarted(data){
-        setTargetName(data.updated_player.target_name)
-        setTargetId(data.updated_player.target_id)
-        setPlayersAlive(data.alive_players)
+    function onGameStarted(updated_player, alive_players){
+        setTargetName(updated_player.target_name)
+        setTargetId(updated_player.target_id)
+        setPlayersAlive(alive_players)
     }
 
     function onGameFinished(data){
-        setTargetName(data.updated_player.target_name)
-        setTargetId(data.updated_player.target_id)
+        setTargetName(data.target_name)
+        setTargetId(data.target_id)
     }
 
 
@@ -75,7 +74,7 @@ var playersleft = 0
             onError={(error) => console.log(error?.message)}
         />
 
-        {playersAlive == 0 && <Confetti />}
+        {playersAlive == 1 && <Confetti />}
     </div>
   );
 };
