@@ -12,6 +12,7 @@
     "@yudiel/react-qr-scanner": "^2.5.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "react-router-dom": "^7.11.0",
     "socket.io-client": "^4.8.3",
     "socket.js": "^0.1.4"
   },

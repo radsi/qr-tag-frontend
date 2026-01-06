@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
 
-const URL = 'http://localhost:3000/socket';
+const URL = import.meta.env.SERVER_URL;
 
 export const socket = io(URL);

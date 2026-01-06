@@ -59,6 +59,16 @@ body {
 }
 
 p {
-  color: #e85d62;
+  color: #FF6961;
   padding-bottom: 20px;
+}
+
+.btn-action {
+  width: 50%;
+  background-color: #FF6961;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: center;
+  font-size: 28px;
 }
